@@ -5,3 +5,9 @@
 CaesarCipher::CaesarCipher(int key) {
 	this->key = key;
 }
+
+std::string CaesarCipher::encrypt(const std::string& text) {
+	for (int i = 0; text[i] != '\0'; i++) {
+		text[i] = text[i] + key;
+	}
+}
