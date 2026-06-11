@@ -1,4 +1,3 @@
-#pragma once
 #include <string>
 #include "abstractCipher.h"
 #include "vigenereCipher.h"

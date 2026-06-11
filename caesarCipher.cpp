@@ -1,4 +1,3 @@
-#pragma once
 #include <string>
 #include "caesarCipher.h"
 #include "abstractCipher.h"
