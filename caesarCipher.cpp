@@ -19,7 +19,7 @@ std::string CaesarCipher::encrypt(const std::string& text) {
 		} else {
 			a = 'a';
 		}
-		int	shiftedPosition = temp[i] - a + key;
+		int	shiftedPosition = temp[i] - a + key_;
 		temp[i] = shiftedPosition % 26 + a;
 	}
 	return temp;
@@ -37,7 +37,7 @@ std::string CaesarCipher::decrypt(const std::string& text) {
 		} else {
 			a = 'a';
 		}
-		int	shiftedPosition = temp[i] - a + (26 - key);
+		int	shiftedPosition = temp[i] - a + (26 - key_);
 		temp[i] = shiftedPosition % 26 + a;
 	}
 	return temp;

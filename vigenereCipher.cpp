@@ -17,8 +17,17 @@ std::string VigenereCipher::encrypt(const std::string& text) {
 		if (!std::isalpha(temp[i])) {
 			continue;
 		}
-		int shift = key_[index] - 'a';
-		temp[i] = temp[i] + shift;
+		
+		char a;
+		if (std::isupper(temp[i])) {
+			a = 'A';
+		} else {
+			a = 'a';
+		}
+		int shift = key_[index] - a;
+		int	shiftedPosition = temp[i] - a + shift;
+		temp[i] = shiftedPosition % 26 + a;
+		
 		if (index == key_.size() - 1) {
 			index = 0;
 		} else {
@@ -35,8 +44,17 @@ std::string VigenereCipher::decrypt(const std::string& text) {
 		if (!std::isalpha(temp[i])) {
 			continue;
 		}
-		int shift = key_[index] - 'a';
-		temp[i] = temp[i] - shift;
+		
+		char a;
+		if (std::isupper(temp[i])) {
+			a = 'A';
+		} else {
+			a = 'a';
+		}
+		int shift = key_[index] - a;
+		int	shiftedPosition = temp[i] - a + 26 - shift;
+		temp[i] = shiftedPosition % 26 + a;
+		
 		if (index == key_.size() - 1) {
 			index = 0;
 		} else {
