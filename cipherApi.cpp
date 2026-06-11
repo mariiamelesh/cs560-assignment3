@@ -29,3 +29,10 @@ char* cipherDecrypt(cipher_t cipher, const char* text) {
 	return result;
 }
 
+void cipherDestoy(cipher_t cipher) {
+	delete cipher;
+}
+
+void cipherFree(char* str) {
+	delete[] str;
+}
