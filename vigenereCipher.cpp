@@ -1,6 +1,8 @@
 #pragma once
 #include <string>
+#include "abstractCipher.h"
 #include "vigenereCipher.h"
+#include <cctype>
 
 VigenereCipher::VigenereCipher(const std::string& key) {
 	this->key = key;

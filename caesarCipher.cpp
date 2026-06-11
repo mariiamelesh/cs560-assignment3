@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include "caesarCipher.h"
+#include "abstractCipher.h"
 #include <cctype>
 
 CaesarCipher::CaesarCipher(int key) {
