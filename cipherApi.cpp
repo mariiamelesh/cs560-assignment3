@@ -17,7 +17,7 @@ char* cipherEncrypt(cipher_t cipher, const char* text) {
 	Cipher* objCipher = cipher;
 	std::string temp = objCipher->encrypt(text);
 	char* result = new char[temp.size() + 1];
-    std::strcpy(result, temp.result());
+    std::strcpy(result, temp.c_str());
 	return result;
 }
 
@@ -25,7 +25,7 @@ char* cipherDecrypt(cipher_t cipher, const char* text) {
 	Cipher* objCipher = cipher;
 	std::string temp = objCipher->decrypt(text);
 	char* result = new char[temp.size() + 1];
-    std::strcpy(result, temp.result());
+    std::strcpy(result, temp.c_str());
 	return result;
 }
 
