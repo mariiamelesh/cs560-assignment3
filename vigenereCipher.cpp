@@ -1,6 +1,6 @@
 #pragma once
 #include <string>
-#include "caesarCipher.h"
+#include "vigenereCipher.h"
 
 VigenereCipher::VigenereCipher(const std::string& key) {
 	this->key = key;
