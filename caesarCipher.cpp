@@ -13,7 +13,14 @@ std::string CaesarCipher::encrypt(const std::string& text) {
 		if (!std::isalpha(temp[i]) {
 			continue;
 		}
-		text[i] = temp[i] + key;
+		char a;
+		if (std::isupper(temp[i])) {
+			a = 'A';
+		} else {
+			a = 'a';
+		}
+		int	shiftedPosition = temp[i] - a + key;
+		temp[i] = shiftedPosition % 26 + a;
 	}
 	return temp;
 }
@@ -24,7 +31,14 @@ std::string CaesarCipher::decrypt(const std::string& text) {
 		if (!std::isalpha(temp[i]) {
 			continue;
 		}
-		temp[i] = temp[i] - key;
+		char a;
+		if (std::isupper(temp[i])) {
+			a = 'A';
+		} else {
+			a = 'a';
+		}
+		int	shiftedPosition = temp[i] - a + (26 - key);
+		temp[i] = shiftedPosition % 26 + a;
 	}
 	return temp;
 }
