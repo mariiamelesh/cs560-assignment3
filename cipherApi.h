@@ -5,3 +5,14 @@ pragma once
 #else
     #define EXPORT __attribute__((visibility("default"))) 
 #endif
+
+extern "C" {
+    typedef void* cipher_t;
+    EXPORT cipher_t cipherCreateCaesar(int key);
+    EXPORT cipher_t cipherCreateVigenere(const char* key);
+    EXPORT char* cipherEncrypt(cipher_t cipher, const char* text);
+    EXPORT char* cipherDecrypt(cipher_t cipher, const char* text);
+    EXPORT void cipherDestoy(cipher_t cipher);
+    EXPORT void cipherFree(char* str);
+
+}
