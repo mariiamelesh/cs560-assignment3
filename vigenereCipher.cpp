@@ -4,7 +4,7 @@
 #include <cctype>
 
 VigenereCipher::VigenereCipher(const std::string& key) {
-	this->key = key;
+	this->key_ = std::tolower(key);
 }
 
 std::string VigenereCipher::encrypt(const std::string& text) {

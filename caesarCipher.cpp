@@ -4,7 +4,7 @@
 #include <cctype>
 
 CaesarCipher::CaesarCipher(int key) {
-	this->key = key;
+	this->key_ = key;
 }
 
 std::string CaesarCipher::encrypt(const std::string& text) {
