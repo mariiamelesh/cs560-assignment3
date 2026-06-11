@@ -26,7 +26,7 @@ std::string VigenereCipher::encrypt(const std::string& text) {
 std::string VigenereCipher::decrypt(const std::string& text) {
 	int index = 0;
 	for (int i = 0; text[i] != '\0'; i++) {
-		if (!std::isalpha(text[i]) {
+		if (!std::isalpha(text[i])) {
 			continue;
 		}
 		int shift = key[index] - 'a';
