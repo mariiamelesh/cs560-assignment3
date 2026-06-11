@@ -11,7 +11,7 @@ std::string VigenereCipher::encrypt(const std::string& text) {
 	std::string temp = text;
 	int index = 0;
 	for (int i = 0; temp[i] != '\0'; i++) {
-		if (!std::isalpha(temp[i]) {
+		if (!std::isalpha(temp[i])) {
 			continue;
 		}
 		int shift = key[index] - 'a';
