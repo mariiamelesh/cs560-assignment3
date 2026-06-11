@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include "abstractCipher.h"
 
 class CaesarCipher : public Cipher {
 	int key_;

@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include "abstractCipher.h"
 
 class VigenereCipher : public Cipher {
 	std::string key_;
