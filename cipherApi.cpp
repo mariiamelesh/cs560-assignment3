@@ -14,7 +14,7 @@ cipher_t cipherCreateVigenere(const char* key) {
 }
 
 char* cipherEncrypt(cipher_t cipher, const char* text) {
-	Cipher* objCipher = cipher;
+	Cipher* objCipher = static_cast<Cipher*>(cipher);
 	std::string temp = objCipher->encrypt(text);
 	char* result = new char[temp.size() + 1];
     std::strcpy(result, temp.c_str());
@@ -22,15 +22,15 @@ char* cipherEncrypt(cipher_t cipher, const char* text) {
 }
 
 char* cipherDecrypt(cipher_t cipher, const char* text) {
-	Cipher* objCipher = cipher;
+	Cipher* objCipher = static_cast<Cipher*>(cipher);
 	std::string temp = objCipher->decrypt(text);
 	char* result = new char[temp.size() + 1];
     std::strcpy(result, temp.c_str());
 	return result;
 }
 
-void cipherDestoy(cipher_t cipher) {
-	delete cipher;
+void cipherDestroy(cipher_t cipher) {
+	delete static_cast<Cipher*>(cipher);
 }
 
 void cipherFree(char* str) {

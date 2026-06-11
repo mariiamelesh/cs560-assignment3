@@ -12,7 +12,7 @@ extern "C" {
     EXPORT cipher_t cipherCreateVigenere(const char* key);
     EXPORT char* cipherEncrypt(cipher_t cipher, const char* text);
     EXPORT char* cipherDecrypt(cipher_t cipher, const char* text);
-    EXPORT void cipherDestoy(cipher_t cipher);
+    EXPORT void cipherDestroy(cipher_t cipher);
     EXPORT void cipherFree(char* str);
 
 }
