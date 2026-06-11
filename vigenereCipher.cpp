@@ -4,7 +4,10 @@
 #include <cctype>
 
 VigenereCipher::VigenereCipher(const std::string& key) {
-	this->key_ = std::tolower(key);
+	this->key_ = key;
+	for (int i = 0; i < this->key_.size(); i++) {
+        this->key_[i] = std::tolower(this->key_[i]);
+    }
 }
 
 std::string VigenereCipher::encrypt(const std::string& text) {
@@ -32,9 +35,9 @@ std::string VigenereCipher::decrypt(const std::string& text) {
 		if (!std::isalpha(temp[i])) {
 			continue;
 		}
-		int shift = key[index] - 'a';
+		int shift = key_[index] - 'a';
 		temp[i] = temp[i] - shift;
-		if (index == key.size() - 1) {
+		if (index == key_.size() - 1) {
 			index = 0;
 		} else {
 			index++;
