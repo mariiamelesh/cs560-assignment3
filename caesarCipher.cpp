@@ -8,21 +8,23 @@ CaesarCipher::CaesarCipher(int key) {
 }
 
 std::string CaesarCipher::encrypt(const std::string& text) {
-	for (int i = 0; text[i] != '\0'; i++) {
-		if (!std::isalpha(text[i]) {
+	std::string temp = text;
+	for (int i = 0; temp[i] != '\0'; i++) {
+		if (!std::isalpha(temp[i]) {
 			continue;
 		}
-		text[i] = text[i] + key;
+		text[i] = temp[i] + key;
 	}
-	return text;
+	return temp;
 }
 
 std::string CaesarCipher::decrypt(const std::string& text) {
-	for (int i = 0; text[i] != '\0'; i++) {
-		if (!std::isalpha(text[i]) {
+	std::string temp = text;
+	for (int i = 0; temp[i] != '\0'; i++) {
+		if (!std::isalpha(temp[i]) {
 			continue;
 		}
-		text[i] = text[i] - key;
+		temp[i] = temp[i] - key;
 	}
-	return text;
+	return temp;
 }
