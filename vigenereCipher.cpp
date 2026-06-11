@@ -9,6 +9,9 @@ VigenereCipher::VigenereCipher(const std::string& key) {
 std::string VigenereCipher::encrypt(const std::string& text) {
 	int index = 0;
 	for (int i = 0; text[i] != '\0'; i++) {
+		if (!std::isalpha(text[i]) {
+			continue;
+		}
 		int shift = key[index] - 'a';
 		text[i] = text[i] + shift;
 		if (index == key.size() - 1) {
@@ -23,6 +26,9 @@ std::string VigenereCipher::encrypt(const std::string& text) {
 std::string VigenereCipher::decrypt(const std::string& text) {
 	int index = 0;
 	for (int i = 0; text[i] != '\0'; i++) {
+		if (!std::isalpha(text[i]) {
+			continue;
+		}
 		int shift = key[index] - 'a';
 		text[i] = text[i] - shift;
 		if (index == key.size() - 1) {
