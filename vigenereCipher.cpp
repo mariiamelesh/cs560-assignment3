@@ -8,35 +8,37 @@ VigenereCipher::VigenereCipher(const std::string& key) {
 }
 
 std::string VigenereCipher::encrypt(const std::string& text) {
+	std::string temp = text;
 	int index = 0;
-	for (int i = 0; text[i] != '\0'; i++) {
-		if (!std::isalpha(text[i]) {
+	for (int i = 0; temp[i] != '\0'; i++) {
+		if (!std::isalpha(temp[i]) {
 			continue;
 		}
 		int shift = key[index] - 'a';
-		text[i] = text[i] + shift;
+		temp[i] = temp[i] + shift;
 		if (index == key.size() - 1) {
 			index = 0;
 		} else {
 			index++;
 		}
 	}
-	return text;
+	return temp;
 }
 
 std::string VigenereCipher::decrypt(const std::string& text) {
+	std::string temp = text;
 	int index = 0;
-	for (int i = 0; text[i] != '\0'; i++) {
-		if (!std::isalpha(text[i])) {
+	for (int i = 0; temp[i] != '\0'; i++) {
+		if (!std::isalpha(temp[i])) {
 			continue;
 		}
 		int shift = key[index] - 'a';
-		text[i] = text[i] - shift;
+		temp[i] = temp[i] - shift;
 		if (index == key.size() - 1) {
 			index = 0;
 		} else {
 			index++;
 		}
 	}
-	return text;
+	return temp;
 }
