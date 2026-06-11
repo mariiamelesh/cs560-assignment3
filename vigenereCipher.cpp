@@ -14,9 +14,9 @@ std::string VigenereCipher::encrypt(const std::string& text) {
 		if (!std::isalpha(temp[i])) {
 			continue;
 		}
-		int shift = key[index] - 'a';
+		int shift = key_[index] - 'a';
 		temp[i] = temp[i] + shift;
-		if (index == key.size() - 1) {
+		if (index == key_.size() - 1) {
 			index = 0;
 		} else {
 			index++;
