@@ -1,4 +1,4 @@
-#include "cipher_api.h"
+#include "cipherApi.h"
 #include "abstractCipher.h"
 #include <cstring> 
 #include <string>
@@ -11,6 +11,11 @@ cipher_t cipherCreateCaesar(int key) {
 
 cipher_t cipherCreateVigenere(const char* key) {
     return new VigenereCipher(std::string(key));
+}
+
+
+cipher_t cipherCreateAffine(int a, int b) {
+    return new AffineCipher(a, b);
 }
 
 char* cipherEncrypt(cipher_t cipher, const char* text) {

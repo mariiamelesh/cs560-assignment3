@@ -10,6 +10,7 @@ extern "C" {
     typedef void* cipher_t;
     EXPORT cipher_t cipherCreateCaesar(int key);
     EXPORT cipher_t cipherCreateVigenere(const char* key);
+	EXPORT cipher_t cipherCreateAffine(int a, int b);
     EXPORT char* cipherEncrypt(cipher_t cipher, const char* text);
     EXPORT char* cipherDecrypt(cipher_t cipher, const char* text);
     EXPORT void cipherDestroy(cipher_t cipher);
