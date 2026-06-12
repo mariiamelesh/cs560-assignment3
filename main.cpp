@@ -4,6 +4,7 @@
 
 using CreateCaesar = void*(*)(int);
 using CreateVigenere = void*(*)(const char*);
+using CreateAffine = void*(*)(int, int);
 using Encrypt = char*(*)(void*, const char*);
 using Decrypt = char*(*)(void*, const char*);
 using Destroy = void(*)(void*);
@@ -18,6 +19,7 @@ int main() {
 	
 	CreateCaesar createCaesar = (CreateCaesar)GetProcAddress(lib, "cipherCreateCaesar");
     CreateVigenere createVigenere = (CreateVigenere)GetProcAddress(lib, "cipherCreateVigenere");
+	CreateAffine createAffine = (CreateAffine)GetProcAddress(lib, "cipherCreateAffine");
     Encrypt cipherEncrypt = (Encrypt)GetProcAddress(lib, "cipherEncrypt");
     Decrypt cipherDecrypt = (Decrypt)GetProcAddress(lib, "cipherDecrypt");
     Destroy cipherDestroy = (Destroy)GetProcAddress(lib, "cipherDestroy");
@@ -26,7 +28,7 @@ int main() {
 	int running = 1;
 	while (running) {
 		int choice;
-		std::cout << "choose cipher: 1 - caesar 2 - vigenere\n0 - exit\n> ";
+		std::cout << "choose cipher: 1 - caesar 2 - vigenere 3 - affine\n0 - exit\n> ";
 		std::cin >> choice;
 		void* cipher = nullptr;
 		switch (choice) {
@@ -37,7 +39,7 @@ int main() {
 			case 1: {
 				int key;
 				std::cout << "write your key\n> ";
-				std::cin.ignore(10000, '\n');
+				std::cin.ignore();
 				std::cin >> key;
 				if (std::cin.fail()) {
 					std::cout << "wrong input XD";
@@ -63,10 +65,27 @@ int main() {
 				cipher = vigenere;
 				break;
 			}
-			default:
-				std::cout << "invalid input";
+			case 3:
+				int a, b;
+				std::cout << "write a coefficient\n> ";
+				std::cin.ignore();
+				std::cin >> a;
+				if (std::cin.fail()) {
+					std::cout << "wrong input XD";
+					return 1;
+				}
+				std::cout << "write b coefficient\n> ";
+				std::cin.ignore();
+				std::cin >> b;
+				
+				if (std::cin.fail()) {
+					std::cout << "wrong input XD";
+					return 1;
+				}
+				void* affine = createAffine(a,b);
+				cipher = affine;
 				break;
-		}
+			}
 		if (running == 0) {
 			break;
 		}
