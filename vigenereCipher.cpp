@@ -24,7 +24,7 @@ std::string VigenereCipher::encrypt(const std::string& text) {
 		} else {
 			a = 'a';
 		}
-		int shift = key_[index] - a;
+		int shift = key_[index] - 'a';
 		int	shiftedPosition = temp[i] - a + shift;
 		temp[i] = shiftedPosition % 26 + a;
 		
@@ -51,7 +51,7 @@ std::string VigenereCipher::decrypt(const std::string& text) {
 		} else {
 			a = 'a';
 		}
-		int shift = key_[index] - a;
+		int shift = key_[index] - 'a';
 		int	shiftedPosition = temp[i] - a + 26 - shift;
 		temp[i] = shiftedPosition % 26 + a;
 		
