@@ -37,7 +37,12 @@ int main() {
 			case 1: {
 				int key;
 				std::cout << "write your key\n> ";
+				std::cin.ignore(10000, '\n');
 				std::cin >> key;
+				if (std::cin.fail()) {
+					std::cout << "wrong input XD";
+					return 1;
+				}
 				void* caesar = createCaesar(key);
 				cipher = caesar;
 				break;
@@ -45,7 +50,12 @@ int main() {
 			case 2: {
 				std::string key;
 				std::cout << "write your key\n> ";
-				std::cin >> key;
+				std::cin.ignore(10000, '\n');
+				std::getline(std::cin, key);
+				if (std::cin.fail()) {
+					std::cout << "wrong input XD";
+					return 1;
+				}
 				void* vigenere = createVigenere(key.c_str());
 				cipher = vigenere;
 				break;
@@ -73,6 +83,9 @@ int main() {
 			case 2:
 				result = cipherDecrypt(cipher, text.c_str());
 				std::cout << "decrypted text: " << result << std::endl;
+				break;
+			default:
+				std::cout << "invalid input";
 				break;
 		}
 		if (cipher!=nullptr) {
