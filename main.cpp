@@ -52,9 +52,12 @@ int main() {
 				std::cout << "write your key\n> ";
 				std::cin.ignore(10000, '\n');
 				std::getline(std::cin, key);
-				if (std::cin.fail()) {
-					std::cout << "wrong input XD";
-					return 1;
+				
+				for (int i = 0; i < key.size(); i++) {
+					if (!std::isalpha(key[i])) {
+						std::cout << "wrong input XD";
+						return 1;
+					}
 				}
 				void* vigenere = createVigenere(key.c_str());
 				cipher = vigenere;
