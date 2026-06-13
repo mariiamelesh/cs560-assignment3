@@ -4,6 +4,7 @@
 #include <string>
 #include "caesarCipher.h"
 #include "vigenereCipher.h"
+#include "affineCipher.h"
 
 cipher_t cipherCreateCaesar(int key) {
     return new CaesarCipher(key);
@@ -12,7 +13,6 @@ cipher_t cipherCreateCaesar(int key) {
 cipher_t cipherCreateVigenere(const char* key) {
     return new VigenereCipher(std::string(key));
 }
-
 
 cipher_t cipherCreateAffine(int a, int b) {
     return new AffineCipher(a, b);
