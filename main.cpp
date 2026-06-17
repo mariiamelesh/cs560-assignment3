@@ -18,17 +18,23 @@ int main() {
     }
 	
 	CreateCaesar createCaesar = (CreateCaesar)GetProcAddress(lib, "cipherCreateCaesar");
+	std::cout << "cipherCreateCaesar function pointer: " << (void*)createCaesar << std::endl;
     CreateVigenere createVigenere = (CreateVigenere)GetProcAddress(lib, "cipherCreateVigenere");
+	std::cout << "cipherCreateVigenere function pointer: " << (void*)createVigenere << std::endl;
 	CreateAffine createAffine = (CreateAffine)GetProcAddress(lib, "cipherCreateAffine");
+	std::cout << "cipherCreateAffine function pointer: " << (void*)createAffine << std::endl;
     Encrypt cipherEncrypt = (Encrypt)GetProcAddress(lib, "cipherEncrypt");
+	std::cout << "cipherEncrypt function pointer: " << (void*)cipherEncrypt << std::endl;
     Decrypt cipherDecrypt = (Decrypt)GetProcAddress(lib, "cipherDecrypt");
+	std::cout << "cipherDecrypt function pointer: " << (void*)cipherDecrypt << std::endl;
     Destroy cipherDestroy = (Destroy)GetProcAddress(lib, "cipherDestroy");
+	std::cout << "cipherDestroy function pointer: " << (void*)cipherDestroy << std::endl;
     Free cipherFree = (Free)GetProcAddress(lib, "cipherFree");
-	
+	std::cout << "cipherFree function pointer: " << (void*)cipherFree << '\n' << std::endl;
 	int running = 1;
 	while (running) {
 		int choice;
-		std::cout << "choose cipher: 1 - caesar 2 - vigenere 3 - affine\n0 - exit\n> ";
+		std::cout << "\nchoose cipher: 1 - caesar 2 - vigenere 3 - affine\n0 - exit\n> ";
 		std::cin >> choice;
 		void* cipher = nullptr;
 		switch (choice) {
@@ -38,23 +44,23 @@ int main() {
 			}
 			case 1: {
 				int key;
+				std::cin.ignore(10000, '\n');
 				std::cout << "write your key\n> ";
-				std::cin.ignore();
 				std::cin >> key;
-				if (std::cin.fail()) {
-					std::cout << "wrong input XD";
-					return 1;
-				}
+				if (std::cin.fail() || key < 0) {
+                    std::cout << "wrong input XD";
+                    return 1;
+                } 
+				std::cin.ignore(10000, '\n');
 				void* caesar = createCaesar(key);
 				cipher = caesar;
 				break;
 			}
 			case 2: {
 				std::string key;
-				std::cout << "write your key\n> ";
 				std::cin.ignore(10000, '\n');
+				std::cout << "write your key\n> ";
 				std::getline(std::cin, key);
-				
 				for (int i = 0; i < key.size(); i++) {
 					if (!std::isalpha(key[i])) {
 						std::cout << "wrong input XD";
@@ -65,7 +71,7 @@ int main() {
 				cipher = vigenere;
 				break;
 			}
-			case 3:
+			case 3: {
 				int a, b;
 				std::cout << "write a coefficient\n> ";
 				std::cin.ignore();
@@ -86,12 +92,16 @@ int main() {
 				cipher = affine;
 				break;
 			}
+			default:
+				std::cout << "invalid input\n";
+				continue;
+			}
 		if (running == 0) {
 			break;
 		}
 		std::string text;
+		//std::cin.ignore(10, '\n');
 		std::cout << "write your text\n> ";
-		std::cin.ignore();
         std::getline(std::cin, text);
 		int choice1;
 		std::cout << "1 - encrypt, 2 - decrypt\n> ";

@@ -24,9 +24,12 @@ std::string VigenereCipher::encrypt(const std::string& text) {
 		} else {
 			a = 'a';
 		}
-		int shift = key_[index] - 'a';
-		int	shiftedPosition = temp[i] - a + shift;
-		temp[i] = shiftedPosition % 26 + a;
+		int shift = key_[index] - 'a'; 
+	
+		int letterPos = temp[i] - a;
+		int newPos = (letterPos + shift) % 26;
+		
+		temp[i] = newPos + a;
 		
 		if (index == key_.size() - 1) {
 			index = 0;
