@@ -76,7 +76,6 @@ int main() {
 			case 3: {
 				int a, b;
 				std::cout << "write a coefficient\n> ";
-				std::cin.ignore();
 				std::cin >> a;
 				if (std::cin.fail()) {
 					std::cout << "wrong input XD";
@@ -84,8 +83,8 @@ int main() {
 					continue;
 				}
 				std::cout << "write b coefficient\n> ";
-				std::cin.ignore();
 				std::cin >> b;
+				std::cin.ignore(10000, '\n');
 				
 				if (std::cin.fail()) {
 					std::cout << "wrong input XD";
@@ -103,9 +102,6 @@ int main() {
 		if (running == 0) {
 			if (cipher!=nullptr) {
 			cipherDestroy(cipher);
-			}
-			if (result!=nullptr) {
-				cipherFree(result);
 			}
 			break;
 		}
