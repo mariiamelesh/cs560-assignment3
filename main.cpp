@@ -49,7 +49,8 @@ int main() {
 				std::cin >> key;
 				if (std::cin.fail() || key < 0) {
                     std::cout << "wrong input XD";
-                    return 1;
+					running = 0;
+					continue;
                 } 
 				std::cin.ignore(10000, '\n');
 				void* caesar = createCaesar(key);
@@ -64,7 +65,8 @@ int main() {
 				for (int i = 0; i < key.size(); i++) {
 					if (!std::isalpha(key[i])) {
 						std::cout << "wrong input XD";
-						return 1;
+						running = 0;
+						continue;
 					}
 				}
 				void* vigenere = createVigenere(key.c_str());
@@ -78,7 +80,8 @@ int main() {
 				std::cin >> a;
 				if (std::cin.fail()) {
 					std::cout << "wrong input XD";
-					return 1;
+					running = 0;
+					continue;
 				}
 				std::cout << "write b coefficient\n> ";
 				std::cin.ignore();
@@ -86,7 +89,8 @@ int main() {
 				
 				if (std::cin.fail()) {
 					std::cout << "wrong input XD";
-					return 1;
+					running = 0;
+					continue;
 				}
 				void* affine = createAffine(a,b);
 				cipher = affine;
@@ -97,10 +101,15 @@ int main() {
 				continue;
 			}
 		if (running == 0) {
+			if (cipher!=nullptr) {
+			cipherDestroy(cipher);
+			}
+			if (result!=nullptr) {
+				cipherFree(result);
+			}
 			break;
 		}
 		std::string text;
-		//std::cin.ignore(10, '\n');
 		std::cout << "write your text\n> ";
         std::getline(std::cin, text);
 		int choice1;
